@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<!-- saved from url=(0123)https://53nbo67z87-496ff2e9c6d22116-0-colab.googleusercontent.com/outputframe.html?vrz=colab_20250916-060051_RC00_807562249 -->
+<html theme="dark" editor="Default Dark" style="overflow-y: auto;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+  // Avoid arrow function syntax to stay ES5 compatible for the sake of googlebot.
+  window.addEventListener("message", function (message) {
+    if (message.source != window.parent) {
+      return;
+    }
+    if (message.data.sandboxed_iframe_evaluation) {
+      // Message is available in scope so evaluated script can get params from
+      // it.
+      window.currentMessage = message;
+      eval.call(null, message.data.sandboxed_iframe_evaluation);
+      delete window.currentMessage;
+    }
+  });
+</script>
+<style>html{--google-orange-600:#e8710a;--google-yellow-600:#f9ab00;--google-blue-600:#1a73e8;--google-blue-700:#1967d2;--paper-amber-50:#fff8e1;--paper-amber-400:#ffca28;--paper-blue-700:#1976d2;--paper-orange-300:#ffb74d;--paper-orange-400:#ffa726;--paper-orange-500:#ff9800;--paper-orange-700:#f57c00;--paper-grey-200:#eee;--paper-grey-300:#e0e0e0;--paper-grey-400:#bdbdbd;--paper-grey-600:#757575;--paper-grey-700:#616161;--paper-grey-800:#424242;--paper-red-100:#ffcdd2;--paper-red-900:#b71c1c;--paper-red-a700:#d50000;--md-icon-font:"Google Symbols";--mdc-icon-font:"Google Symbols"}html{--colab-primary-color:#0b57d0;--colab-primary-text-color:#1f1f1f;--colab-primary-text-color-rgb:31,31,31;--colab-secondary-text-color:#444746;--colab-primary-surface-color:#fff;--colab-secondary-surface-color:#f7f7f7;--colab-highlighted-surface-color:var(--paper-grey-200);--colab-border-color:#dadada;--colab-bold-border-color:#747775;--ansi-black:#000;--ansi-red:#8b0000;--ansi-green:#006400;--ansi-yellow:#cdcd00;--ansi-blue:#00e;--ansi-magenta:#cd00cd;--ansi-cyan:#4682b4;--ansi-gray:#e5e5e5;--ansi-bright-black:#7f7f7f;--ansi-bright-red:red;--ansi-bright-green:#00d000;--ansi-bright-yellow:#ff0;--ansi-bright-blue:#5c5cff;--ansi-bright-magenta:#f0f;--ansi-bright-cyan:#0ff;--ansi-bright-gray:#fff;--colab-anchor-color:var(--colab-primary-color);--colab-icon-color:var(--colab-secondary-text-color);--colab-scrollbar-color:rgba(var(--colab-primary-text-color-rgb),0.24);--colab-scrollbar-hover-color:rgba(var(--colab-primary-text-color-rgb),0.48);--colab-scrollbar-active-color:rgba(var(--colab-primary-text-color-rgb),0.48);--colab-code-font-family:monospace;--colab-chrome-font-family:"Google Sans Text","Google Sans","Noto",sans-serif;--colab-chrome-font-size:14px}html[theme=dark]{--colab-primary-color:#a8c7fa;--colab-primary-text-color:#e3e3e3;--colab-primary-text-color-rgb:227,227,227;--colab-secondary-text-color:#c4c7c5;--colab-primary-surface-color:#383838;--colab-secondary-surface-color:#454545;--colab-highlighted-surface-color:#525252;--colab-border-color:var(--paper-grey-700);--colab-bold-border-color:#c4c7c5;--ansi-black:#3f3f3f;--ansi-red:#ff7a88;--ansi-green:#57bb8a;--ansi-yellow:#ff6;--ansi-blue:#82b1ff;--ansi-magenta:#cd00cd;--ansi-cyan:#99bbd7;--ansi-gray:#e5e5e5;--ansi-bright-green:#0f0}html[theme=dark] body.embedded{--colab-primary-surface-color:#131314;--colab-secondary-surface-color:#202124;--colab-highlighted-surface-color:#202124;--colab-border-color:#3c4043}html[editor=Synthwave84]{--colab-anchor-color:#f97e72;--colab-primary-surface-color:#241b2f;--colab-secondary-surface-color:#49549539;--colab-highlighted-surface-color:#372d4b;--colab-border-color:#34294fb3;--ansi-red:#fe4450;--ansi-green:#72f1b8;--ansi-yellow:#f97e72;--ansi-blue:#03edf9;--ansi-magenta:#ff7edb;--ansi-cyan:#03edf9;--ansi-bright-red:#fe4450;--ansi-bright-green:#72f1b8;--ansi-bright-yellow:#fede5d;--ansi-bright-blue:#03edf9;--ansi-bright-magenta:#ff7edb;--ansi-bright-cyan:#03edf9}html{overflow-y:hidden}body{background:var(--colab-primary-surface-color);color:var(--colab-primary-text-color);font-family:var(--colab-chrome-font-family);font-size:var(--colab-chrome-font-size);line-height:1.24;font-weight:400;padding:7px 0 10px 5px;margin:0}h1,h2,h3,h4,h5,h6{color:var(--colab-primary-text-color);font-family:var(--colab-chrome-font-family);font-weight:700;margin-bottom:4px}p,ul{margin-bottom:6px;margin-top:6px}pre{margin-bottom:0;margin-top:0}a{color:var(--colab-anchor-color)}div.output_text,div.output_text pre,div.stream{display:inline}.execute_result>pre{display:block}.output_latex,.output_markdown{max-width:1016px}.output_markdown table,table.dataframe{border-collapse:collapse;border-spacing:0;border:none;table-layout:fixed}.output_markdown table thead,table.dataframe thead{border-bottom:1px solid var(--colab-border-color);font-family:var(--colab-code-font-family);text-align:right}.output_markdown table td,.output_markdown table th,.output_markdown table tr,table.dataframe td,table.dataframe th,table.dataframe tr{border:none;padding:.5em;white-space:normal}.output_markdown table th,table.dataframe th{font-weight:700}.output_markdown table th.col_heading,table.dataframe th.col_heading{text-align:right}.output_markdown table tbody tr:nth-child(odd),table.dataframe tbody tr:nth-child(odd){background:var(--colab-secondary-surface-color)}.output_markdown table tbody tr:hover,.output_markdown table tbody tr:nth-child(odd):hover,table.dataframe tbody tr:hover,table.dataframe tbody tr:nth-child(odd):hover{background-color:var(--colab-highlighted-surface-color)}.output_markdown table td,table.dataframe td{text-align:right}table.dataTable input.text_filter{width:95%}.output_markdown table th,table.dataTable th{text-align:left}.output_image>img{background-color:#fff;max-width:100%;vertical-align:bottom}.output_image>img.unconstrained{max-width:unset}.ansibold{font-weight:700}.ansiblack{color:#000}.ansired{color:darkred}.ansigreen{color:#006400}.ansiyellow{color:brown}.ansiblue{color:#00008b}.ansipurple{color:#9400d3}.ansicyan{color:#4682b4}.ansigray{color:gray}.ansibgblack{background-color:#000}.ansibgred{background-color:red}.ansibggreen{background-color:green}.ansibgyellow{background-color:#ff0}.ansibgblue{background-color:blue}.ansibgpurple{background-color:#f0f}.ansibgcyan{background-color:cyan}.ansibggray{background-color:gray}.output-error span{font-weight:400!important}.output-error pre{white-space:pre-wrap}.display_data .output_text pre,.execute_result .output_text pre{white-space:pre-wrap}input.raw_input{font-family:var(--colab-code-font-family);width:90%}input{background:var(--colab-primary-surface-color);border:1px solid var(--colab-bold-border-color);color:var(--colab-primary-text-color)}#output-area{display:flow-root}#output-area button.colab{background-color:var(--colab-secondary-surface-color);border:0;box-shadow:0 3px 4px 0 rgba(0,0,0,.14),0 1px 8px 0 rgba(0,0,0,.12),0 3px 3px -2px rgba(0,0,0,.4);color:var(--colab-primary-text-color);font-family:var(--colab-chrome-font-family);font-size:11px;margin:0 4px 10px;padding:6px;text-transform:uppercase;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}#output-area button.colab:hover{background-color:var(--colab-highlighted-surface-color);cursor:pointer}#output-area .output-error button.error-details{background-color:#42a5f5;color:#fff}#output-area .output-error button.error-details:hover{background-color:#2196f3}#output-area .stdin-widget{-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;display:inline;font-family:var(--colab-code-font-family);margin-right:10px;margin-top:10px;min-width:250px;padding:1px}#output-area .stdin-widget-hidden{visibility:hidden}.error .collapsed .extraneous{display:none}.error .error-expander{-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.error .error-expander hr{border:0;border-top:1px solid var(--colab-bold-border-color);-webkit-box-flex:1;-webkit-flex-grow:1;-moz-box-flex:1;-ms-flex-positive:1;flex-grow:1;height:1px;margin:0 10px;padding:0}.error .error-expander hr:first-child{max-width:240px}.error .error-expander svg{fill:var(--colab-icon-color);height:24px;stroke:var(--colab-icon-color);width:24px}.lm-Widget.lm-mod-hidden{display:none!important}audio:focus{outline:none}::-webkit-scrollbar{height:12px;width:12px}::-webkit-scrollbar-button{height:0;width:0}::-webkit-scrollbar-corner{background:transparent}::-webkit-scrollbar-thumb{background-clip:content-box;background-color:var(--colab-scrollbar-color);border:2px solid transparent;border-radius:8px;min-height:28px;min-width:28px}::-webkit-scrollbar-thumb:hover{background-color:var(--colab-scrollbar-hover-color)}::-webkit-scrollbar-thumb:active{background-color:var(--colab-scrollbar-active-color)}@supports not (selector(::-webkit-scrollbar)){*{scrollbar-color:var(--colab-scrollbar-color) transparent}}.string-repr{display:inline}.string-repr .quote{opacity:75%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.string-repr pre{display:inline;white-space:pre-wrap;word-break:break-all}.string-repr button{color:var(--colab-primary-text-color);cursor:pointer;border:1px solid #767676;border-radius:2px;outline:none}.string-repr button.copy{background:transparent;border:none;margin-left:4px;opacity:0;padding:0;stroke:var(--colab-primary-text-color);-webkit-transition:opacity .2s;transition:opacity .2s}.string-repr button.copy svg{width:14px}.string-repr.hover button.copy,.string-repr:hover button.copy{opacity:1}.string-repr button.more{background-color:transparent;border-color:transparent;display:none;padding:0;-webkit-transition:background-color .2s,border-color .2s;transition:background-color .2s,border-color .2s}.string-repr.large button.more{display:inline}.string-repr.large.truncated button .collapse{display:none}.string-repr.large button .expand{display:none}.string-repr.large.truncated button .expand{display:inline}.string-repr.hover button.more,.string-repr:hover button.more{border-color:#767676}
+/*# sourceMappingURL=outputframe.css.map */
+//@ sourceURL=https://ssl.gstatic.com/colaboratory-static/common/239d6c25570eaf6dd9514e532933ee3b/outputframe.css</style><!--<base href="https://localhost:8080/">--><base href="."></head><body><div id="output-area"><span id="output-header"> </span><div id="output-body"><div class="stream"><div class="output_subarea output_text"><pre>Movie Outliers (Number of Cast Members):
+</pre></div></div><div class="display_data"><div class="output_subarea output_html rendered_html">
+  <div id="df-9226f9e2-de4b-4b98-805b-77c8680367f8" class="colab-df-container">
+    <div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>show_id</th>
+      <th>type</th>
+      <th>title</th>
+      <th>director</th>
+      <th>cast</th>
+      <th>country</th>
+      <th>date_added</th>
+      <th>release_year</th>
+      <th>rating</th>
+      <th>duration</th>
+      <th>listed_in</th>
+      <th>description</th>
+      <th>num_cast</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>588</th>
+      <td>s589</td>
+      <td>Movie</td>
+      <td>Arthur Christmas</td>
+      <td>Sarah Smith</td>
+      <td>James McAvoy, Hugh Laurie, Bill Nighy, Jim Bro...</td>
+      <td>United Kingdom, United States</td>
+      <td>January 1, 2020</td>
+      <td>2011</td>
+      <td>PG</td>
+      <td>98 min</td>
+      <td>Children &amp; Family Movies, Comedies</td>
+      <td>at santa claus's super-secret toy-making facil...</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>635</th>
+      <td>s636</td>
+      <td>Movie</td>
+      <td>Avengers: Infinity War</td>
+      <td>Anthony Russo, Joe Russo</td>
+      <td>Robert Downey Jr., Josh Brolin, Mark Ruffalo, ...</td>
+      <td>United States</td>
+      <td>December 25, 2018</td>
+      <td>2018</td>
+      <td>PG-13</td>
+      <td>150 min</td>
+      <td>Action &amp; Adventure, Sci-Fi &amp; Fantasy</td>
+      <td>superheroes amass to stop intergalactic sociop...</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>802</th>
+      <td>s803</td>
+      <td>Movie</td>
+      <td>Bedtime Stories</td>
+      <td>Adam Shankman</td>
+      <td>Adam Sandler, Keri Russell, Guy Pearce, Russel...</td>
+      <td>United States</td>
+      <td>March 5, 2019</td>
+      <td>2008</td>
+      <td>PG</td>
+      <td>100 min</td>
+      <td>Children &amp; Family Movies, Comedies</td>
+      <td>skeeter's life is turned upside down when the ...</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>852</th>
+      <td>s853</td>
+      <td>Movie</td>
+      <td>Best of Stand-Up 2020</td>
+      <td>NaN</td>
+      <td>Jerry Seinfeld, Leslie Jones, Taylor Tomlinson...</td>
+      <td>NaN</td>
+      <td>December 31, 2020</td>
+      <td>2020</td>
+      <td>TV-MA</td>
+      <td>77 min</td>
+      <td>Stand-Up Comedy</td>
+      <td>from jerry seinfeld to leslie jones, kevin har...</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>951</th>
+      <td>s952</td>
+      <td>Movie</td>
+      <td>Black Hawk Down</td>
+      <td>Ridley Scott</td>
+      <td>Josh Hartnett, Ewan McGregor, Tom Sizemore, Er...</td>
+      <td>United States, United Kingdom</td>
+      <td>January 1, 2019</td>
+      <td>2001</td>
+      <td>R</td>
+      <td>144 min</td>
+      <td>Action &amp; Adventure, Dramas</td>
+      <td>when u.s. forces attempt to capture two underl...</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1030</th>
+      <td>s1031</td>
+      <td>Movie</td>
+      <td>Bolt</td>
+      <td>Byron Howard, Chris Williams</td>
+      <td>John Travolta, Miley Cyrus, Susie Essman, Mark...</td>
+      <td>United States</td>
+      <td>July 22, 2018</td>
+      <td>2008</td>
+      <td>PG</td>
+      <td>99 min</td>
+      <td>Children &amp; Family Movies, Comedies</td>
+      <td>this tale follows german shepherd bolt, a cani...</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1576</th>
+      <td>s1577</td>
+      <td>Movie</td>
+      <td>Dad Wanted</td>
+      <td>Javier Colinas</td>
+      <td>Natalia Coronado, Juan Pablo Medina, Silvia Na...</td>
+      <td>Mexico</td>
+      <td>September 11, 2020</td>
+      <td>2020</td>
+      <td>TV-14</td>
+      <td>103 min</td>
+      <td>Children &amp; Family Movies, Comedies, Dramas</td>
+      <td>what does a thrill-seeker tween girl do when h...</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>2502</th>
+      <td>s2503</td>
+      <td>Movie</td>
+      <td>Gosford Park</td>
+      <td>Robert Altman</td>
+      <td>Eileen Atkins, Bob Balaban, Alan Bates, Charle...</td>
+      <td>United States, United Kingdom, Italy</td>
+      <td>November 1, 2019</td>
+      <td>2001</td>
+      <td>R</td>
+      <td>137 min</td>
+      <td>Comedies, Dramas, International Movies</td>
+      <td>in this witty whodunit, wealthy guests and the...</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2847</th>
+      <td>s2848</td>
+      <td>Movie</td>
+      <td>How to Make an American Quilt</td>
+      <td>Jocelyn Moorhouse</td>
+      <td>Winona Ryder, Anne Bancroft, Ellen Burstyn, Ka...</td>
+      <td>United States</td>
+      <td>April 1, 2018</td>
+      <td>1995</td>
+      <td>PG-13</td>
+      <td>116 min</td>
+      <td>Dramas, Romantic Movies</td>
+      <td>a conflicted young woman spends the summer wit...</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2855</th>
+      <td>s2856</td>
+      <td>Movie</td>
+      <td>Hubie Halloween</td>
+      <td>Steve Brill</td>
+      <td>Adam Sandler, Kevin James, Julie Bowen, Ray Li...</td>
+      <td>United States</td>
+      <td>October 7, 2020</td>
+      <td>2020</td>
+      <td>PG-13</td>
+      <td>104 min</td>
+      <td>Comedies, Horror Movies</td>
+      <td>hubie's not the most popular guy in salem, mas...</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>3202</th>
+      <td>s3203</td>
+      <td>Movie</td>
+      <td>John Carter</td>
+      <td>Andrew Stanton</td>
+      <td>Taylor Kitsch, Lynn Collins, Samantha Morton, ...</td>
+      <td>United States</td>
+      <td>May 2, 2019</td>
+      <td>2012</td>
+      <td>PG-13</td>
+      <td>133 min</td>
+      <td>Action &amp; Adventure, Sci-Fi &amp; Fantasy</td>
+      <td>one minute, civil war veteran john carter is e...</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>3978</th>
+      <td>s3979</td>
+      <td>Movie</td>
+      <td>Mascots</td>
+      <td>Christopher Guest</td>
+      <td>Carrie Aizley, Sarah Baker, Bob Balaban, Ed Be...</td>
+      <td>United States</td>
+      <td>October 13, 2016</td>
+      <td>2016</td>
+      <td>TV-MA</td>
+      <td>95 min</td>
+      <td>Comedies</td>
+      <td>eager contestants don big heads and furry suit...</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>4067</th>
+      <td>s4068</td>
+      <td>Movie</td>
+      <td>Michael Bolton's Big, Sexy Valentine's Day Spe...</td>
+      <td>Scott Aukerman, Akiva Schaffer</td>
+      <td>Michael Bolton, Andy Samberg, Will Forte, Kenn...</td>
+      <td>United States</td>
+      <td>February 7, 2017</td>
+      <td>2017</td>
+      <td>TV-MA</td>
+      <td>54 min</td>
+      <td>Comedies, Music &amp; Musicals, Romantic Movies</td>
+      <td>after santa tells him he needs 75,000 new babi...</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>4119</th>
+      <td>s4120</td>
+      <td>Movie</td>
+      <td>Miracle</td>
+      <td>Gavin O'Connor</td>
+      <td>Kurt Russell, Patricia Clarkson, Noah Emmerich...</td>
+      <td>Canada, United States</td>
+      <td>June 1, 2018</td>
+      <td>2004</td>
+      <td>PG</td>
+      <td>136 min</td>
+      <td>Children &amp; Family Movies, Dramas, Sports Movies</td>
+      <td>u.s. hockey coach herb brooks unites a motley ...</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>4244</th>
+      <td>s4245</td>
+      <td>Movie</td>
+      <td>Movie 43</td>
+      <td>Peter Farrelly, Will Graham, Steve Carr, Griff...</td>
+      <td>Greg Kinnear, Dennis Quaid, Common, Seth MacFa...</td>
+      <td>United States</td>
+      <td>April 9, 2019</td>
+      <td>2013</td>
+      <td>R</td>
+      <td>94 min</td>
+      <td>Comedies</td>
+      <td>an eye-popping cast stars in this sketch-comed...</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>5054</th>
+      <td>s5055</td>
+      <td>Movie</td>
+      <td>Race to Witch Mountain</td>
+      <td>Andy Fickman</td>
+      <td>Dwayne Johnson, AnnaSophia Robb, Alexander Lud...</td>
+      <td>United States</td>
+      <td>July 1, 2019</td>
+      <td>2009</td>
+      <td>PG</td>
+      <td>99 min</td>
+      <td>Children &amp; Family Movies</td>
+      <td>a sister and brother with special powers are o...</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>5084</th>
+      <td>s5085</td>
+      <td>Movie</td>
+      <td>Ralph Breaks the Internet: Wreck-It Ralph 2</td>
+      <td>Phil Johnston, Rich Moore</td>
+      <td>John C. Reilly, Sarah Silverman, Taraji P. Hen...</td>
+      <td>United States</td>
+      <td>June 11, 2019</td>
+      <td>2018</td>
+      <td>PG</td>
+      <td>113 min</td>
+      <td>Children &amp; Family Movies, Comedies</td>
+      <td>when video-game bad guy ralph and best friend ...</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>5209</th>
+      <td>s5210</td>
+      <td>Movie</td>
+      <td>Rim of the World</td>
+      <td>McG</td>
+      <td>Jack Gore, Miya Cech, Benjamin Flores Jr., Ale...</td>
+      <td>United States</td>
+      <td>May 24, 2019</td>
+      <td>2019</td>
+      <td>TV-14</td>
+      <td>99 min</td>
+      <td>Action &amp; Adventure, Independent Movies, Sci-Fi...</td>
+      <td>stranded at a summer camp when aliens attack t...</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>5388</th>
+      <td>s5389</td>
+      <td>Movie</td>
+      <td>Sarah Cooper: Everything's Fine</td>
+      <td>Natasha Lyonne</td>
+      <td>Sarah Cooper, Fred Armisen, Maya Rudolph, Ben ...</td>
+      <td>United States</td>
+      <td>October 27, 2020</td>
+      <td>2020</td>
+      <td>TV-MA</td>
+      <td>50 min</td>
+      <td>Comedies</td>
+      <td>comedian and trump lip-synching sensation sara...</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>5416</th>
+      <td>s5417</td>
+      <td>Movie</td>
+      <td>Saving Mr. Banks</td>
+      <td>John Lee Hancock</td>
+      <td>Emma Thompson, Tom Hanks, Paul Giamatti, Jason...</td>
+      <td>United States, United Kingdom, Australia</td>
+      <td>March 2, 2019</td>
+      <td>2013</td>
+      <td>PG-13</td>
+      <td>126 min</td>
+      <td>Comedies, Dramas</td>
+      <td>when walt disney sets his sights on obtaining ...</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>5442</th>
+      <td>s5443</td>
+      <td>Movie</td>
+      <td>Scream 2</td>
+      <td>Wes Craven</td>
+      <td>Neve Campbell, David Arquette, Courteney Cox, ...</td>
+      <td>United States</td>
+      <td>October 1, 2019</td>
+      <td>1997</td>
+      <td>R</td>
+      <td>121 min</td>
+      <td>Horror Movies</td>
+      <td>gale has written a best-seller which has been ...</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>5727</th>
+      <td>s5728</td>
+      <td>Movie</td>
+      <td>Soul Surfer</td>
+      <td>Sean McNamara</td>
+      <td>AnnaSophia Robb, Helen Hunt, Dennis Quaid, Car...</td>
+      <td>United States</td>
+      <td>May 17, 2020</td>
+      <td>2011</td>
+      <td>PG</td>
+      <td>106 min</td>
+      <td>Dramas, Faith &amp; Spirituality, Sports Movies</td>
+      <td>hawaiian teen bethany hamilton bravely returns...</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>5790</th>
+      <td>s5791</td>
+      <td>Movie</td>
+      <td>Star Wars: Episode VIII: The Last Jedi</td>
+      <td>Rian Johnson</td>
+      <td>Mark Hamill, Carrie Fisher, Adam Driver, Daisy...</td>
+      <td>United States</td>
+      <td>June 26, 2018</td>
+      <td>2017</td>
+      <td>PG-13</td>
+      <td>152 min</td>
+      <td>Action &amp; Adventure, Children &amp; Family Movies, ...</td>
+      <td>as the remnants of the resistance flee kylo re...</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>5819</th>
+      <td>s5820</td>
+      <td>Movie</td>
+      <td>Still LAUGH-IN: The Stars Celebrate</td>
+      <td>NaN</td>
+      <td>Lily Tomlin, Tiffany Haddish, Neil Patrick Har...</td>
+      <td>United States</td>
+      <td>May 14, 2019</td>
+      <td>2019</td>
+      <td>TV-MA</td>
+      <td>61 min</td>
+      <td>Comedies</td>
+      <td>this celebration of the groundbreaking comedy ...</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>6447</th>
+      <td>s6448</td>
+      <td>Movie</td>
+      <td>The Help</td>
+      <td>Tate Taylor</td>
+      <td>Emma Stone, Viola Davis, Bryce Dallas Howard, ...</td>
+      <td>United States</td>
+      <td>June 1, 2020</td>
+      <td>2011</td>
+      <td>PG-13</td>
+      <td>147 min</td>
+      <td>Dramas</td>
+      <td>a young, white writer stirs up the status quo ...</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>6507</th>
+      <td>s6508</td>
+      <td>Movie</td>
+      <td>The Irishman</td>
+      <td>Martin Scorsese</td>
+      <td>Robert De Niro, Al Pacino, Joe Pesci, Harvey K...</td>
+      <td>United States</td>
+      <td>November 27, 2019</td>
+      <td>2019</td>
+      <td>R</td>
+      <td>209 min</td>
+      <td>Dramas</td>
+      <td>hit man frank sheeran looks back at the secret...</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>6779</th>
+      <td>s6780</td>
+      <td>Movie</td>
+      <td>The Princess and the Frog</td>
+      <td>Ron Clements, John Musker</td>
+      <td>Anika Noni Rose, Bruno Campos, Keith David, Mi...</td>
+      <td>United States</td>
+      <td>July 16, 2019</td>
+      <td>2009</td>
+      <td>G</td>
+      <td>98 min</td>
+      <td>Children &amp; Family Movies</td>
+      <td>in new orleans during the jazz age, a beautifu...</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>6819</th>
+      <td>s6820</td>
+      <td>Movie</td>
+      <td>The Ridiculous 6</td>
+      <td>Frank Coraci</td>
+      <td>Adam Sandler, Terry Crews, Jorge Garcia, Taylo...</td>
+      <td>United States</td>
+      <td>December 11, 2015</td>
+      <td>2015</td>
+      <td>TV-14</td>
+      <td>120 min</td>
+      <td>Action &amp; Adventure, Comedies</td>
+      <td>when his outlaw dad is kidnapped, tommy “white...</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>7343</th>
+      <td>s7344</td>
+      <td>Movie</td>
+      <td>Underdogs</td>
+      <td>Juan José Campanella</td>
+      <td>Ariana Grande, Nicholas Hoult, Matthew Morriso...</td>
+      <td>Argentina, Spain</td>
+      <td>June 15, 2020</td>
+      <td>2013</td>
+      <td>PG</td>
+      <td>85 min</td>
+      <td>Children &amp; Family Movies, Sports Movies</td>
+      <td>when his archenemy returns to settle a score, ...</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>7505</th>
+      <td>s7506</td>
+      <td>Movie</td>
+      <td>We Can Be Heroes</td>
+      <td>Robert Rodriguez</td>
+      <td>YaYa Gosselin, Pedro Pascal, Priyanka Chopra, ...</td>
+      <td>United States</td>
+      <td>December 25, 2020</td>
+      <td>2020</td>
+      <td>PG</td>
+      <td>101 min</td>
+      <td>Children &amp; Family Movies, Comedies</td>
+      <td>when alien invaders capture earth’s superheroe...</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive(&#39;df-9226f9e2-de4b-4b98-805b-77c8680367f8&#39;)" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script type="">
+      const buttonEl =
+        document.querySelector('#df-9226f9e2-de4b-4b98-805b-77c8680367f8 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-9226f9e2-de4b-4b98-805b-77c8680367f8');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-87f18198-eb4d-4909-a977-ff3cd4fca60a">
+      <button class="colab-df-quickchart" onclick="quickchart(&#39;df-87f18198-eb4d-4909-a977-ff3cd4fca60a&#39;)" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script type="">
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-87f18198-eb4d-4909-a977-ff3cd4fca60a button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_5bb617ae-17f4-4171-87b5-ff19af00ed7c">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable(&#39;outliers_movies_cast&#39;)" title="Generate code using this dataframe." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"></path>
+  </svg>
+    </button>
+    <script type="">
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_5bb617ae-17f4-4171-87b5-ff19af00ed7c button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('outliers_movies_cast');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div><div class="stream"><div class="output_subarea output_text"><pre>
+TV Show Outliers (Number of Cast Members):
+</pre></div></div><div class="display_data"><div class="output_subarea output_html rendered_html">
+  <div id="df-0cebb458-fb31-48ac-a776-b7b80c42114e" class="colab-df-container">
+    <div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>show_id</th>
+      <th>type</th>
+      <th>title</th>
+      <th>director</th>
+      <th>cast</th>
+      <th>country</th>
+      <th>date_added</th>
+      <th>release_year</th>
+      <th>rating</th>
+      <th>duration</th>
+      <th>listed_in</th>
+      <th>description</th>
+      <th>num_cast</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>64</th>
+      <td>s65</td>
+      <td>TV Show</td>
+      <td>13 Reasons Why: Beyond the Reasons</td>
+      <td>NaN</td>
+      <td>Dylan Minnette, Katherine Langford, Kate Walsh...</td>
+      <td>United States</td>
+      <td>August 23, 2019</td>
+      <td>2019</td>
+      <td>TV-MA</td>
+      <td>3 Seasons</td>
+      <td>Crime TV Shows, Docuseries</td>
+      <td>cast members, writers, producers and mental he...</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>s142</td>
+      <td>TV Show</td>
+      <td>7SEEDS</td>
+      <td>NaN</td>
+      <td>Nao Toyama, Jun Fukuyama, Katsuyuki Konishi, Y...</td>
+      <td>NaN</td>
+      <td>March 26, 2020</td>
+      <td>2020</td>
+      <td>TV-MA</td>
+      <td>2 Seasons</td>
+      <td>Anime Series, International TV Shows</td>
+      <td>shy natsu awakens as part of a group chosen to...</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>322</th>
+      <td>s323</td>
+      <td>TV Show</td>
+      <td>Afronta! Facing It!</td>
+      <td>Juliana Vicente</td>
+      <td>Loo Nascimento, Ingrid Silva, Rincon Sapiência...</td>
+      <td>Brazil</td>
+      <td>October 31, 2020</td>
+      <td>2017</td>
+      <td>TV-PG</td>
+      <td>1 Season</td>
+      <td>Docuseries, International TV Shows</td>
+      <td>this docuseries spotlights afro-brazilian thin...</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>468</th>
+      <td>s469</td>
+      <td>TV Show</td>
+      <td>American Horror Story</td>
+      <td>NaN</td>
+      <td>Evan Peters, Sarah Paulson, Jessica Lange, Den...</td>
+      <td>United States</td>
+      <td>November 13, 2020</td>
+      <td>2019</td>
+      <td>TV-MA</td>
+      <td>9 Seasons</td>
+      <td>TV Horror, TV Mysteries, TV Thrillers</td>
+      <td>this twisted emmy-winning drama plays upon the...</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>707</th>
+      <td>s708</td>
+      <td>TV Show</td>
+      <td>Bala Loca</td>
+      <td>NaN</td>
+      <td>Alejandro Goic, Trinidad González, Ingrid Isen...</td>
+      <td>Chile</td>
+      <td>April 1, 2017</td>
+      <td>2016</td>
+      <td>TV-MA</td>
+      <td>1 Season</td>
+      <td>International TV Shows, Spanish-Language TV Sh...</td>
+      <td>a veteran journalist starting a news site abou...</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>7365</th>
+      <td>s7366</td>
+      <td>TV Show</td>
+      <td>Until Dawn</td>
+      <td>NaN</td>
+      <td>Ahmed Sylla, Alban Ivanov, Ornella Fleury, Nat...</td>
+      <td>France</td>
+      <td>January 10, 2020</td>
+      <td>2020</td>
+      <td>TV-MA</td>
+      <td>1 Season</td>
+      <td>International TV Shows, Reality TV, TV Comedies</td>
+      <td>france’s funniest comics carry out ghastly tas...</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>7387</th>
+      <td>s7388</td>
+      <td>TV Show</td>
+      <td>Vampire Knight</td>
+      <td>NaN</td>
+      <td>Daisuke Kishio, Ezra Weisz, Mamoru Miyano, Vic...</td>
+      <td>Japan</td>
+      <td>October 15, 2016</td>
+      <td>2008</td>
+      <td>TV-14</td>
+      <td>2 Seasons</td>
+      <td>Anime Series, International TV Shows, Romantic...</td>
+      <td>at cross academy, two student disciplinary com...</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>7492</th>
+      <td>s7493</td>
+      <td>TV Show</td>
+      <td>Watership Down</td>
+      <td>Noam Murro</td>
+      <td>James McAvoy, Nicholas Hoult, John Boyega, Ben...</td>
+      <td>United Kingdom, Ireland, United States</td>
+      <td>December 23, 2018</td>
+      <td>2018</td>
+      <td>TV-PG</td>
+      <td>1 Season</td>
+      <td>British TV Shows, International TV Shows, TV A...</td>
+      <td>a warren of rabbits battles many threats on th...</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>7542</th>
+      <td>s7543</td>
+      <td>TV Show</td>
+      <td>Wet Hot American Summer</td>
+      <td>NaN</td>
+      <td>Elizabeth Banks, Lake Bell, H. Jon Benjamin, M...</td>
+      <td>United States</td>
+      <td>July 31, 2015</td>
+      <td>2015</td>
+      <td>TV-MA</td>
+      <td>1 Season</td>
+      <td>TV Comedies</td>
+      <td>it's the first day of camp in this outrageous ...</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>7543</th>
+      <td>s7544</td>
+      <td>TV Show</td>
+      <td>Wet Hot American Summer: Ten Years Later</td>
+      <td>NaN</td>
+      <td>Elizabeth Banks, Lake Bell, H. Jon Benjamin, M...</td>
+      <td>United States</td>
+      <td>August 4, 2017</td>
+      <td>2017</td>
+      <td>TV-MA</td>
+      <td>1 Season</td>
+      <td>TV Comedies</td>
+      <td>a decade after their wild summer as junior cou...</td>
+      <td>33</td>
+    </tr>
+  </tbody>
+</table>
+<p>61 rows × 13 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive(&#39;df-0cebb458-fb31-48ac-a776-b7b80c42114e&#39;)" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script type="">
+      const buttonEl =
+        document.querySelector('#df-0cebb458-fb31-48ac-a776-b7b80c42114e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-0cebb458-fb31-48ac-a776-b7b80c42114e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-7a4f056d-04bd-421a-b6e1-a81e3d1eef46">
+      <button class="colab-df-quickchart" onclick="quickchart(&#39;df-7a4f056d-04bd-421a-b6e1-a81e3d1eef46&#39;)" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script type="">
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-7a4f056d-04bd-421a-b6e1-a81e3d1eef46 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_c847a908-9553-4931-9c50-687a49f4b72c">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable(&#39;outliers_tv_shows_cast&#39;)" title="Generate code using this dataframe." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"></path>
+  </svg>
+    </button>
+    <script type="">
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_c847a908-9553-4931-9c50-687a49f4b72c button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('outliers_tv_shows_cast');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div></div><span id="output-footer"></span></div></body></html>
